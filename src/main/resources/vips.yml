@@ -1,0 +1,77 @@
+###############################################
+#                                             #
+#        Developer: LuizBebe840#9887          #
+#                                             #
+###############################################
+
+Status:
+  Using: "&7This &aVIP &7is already in use!"
+  NotUsing: " &8☰ &aClick to exchange"
+  Permanent-Lore: '&aNever' # It will appear in "{remaining_time}" if vip is permanent
+
+Vips:
+  MVP:
+    Group: "mvp" # Group name in PermissionsEx or LuckPerms
+    Name: "&b[MVP]"
+    Icon:
+      Name: "&6&lVIP &8» {name}"
+      Lore:
+        - ""
+        - "&7See below for &aVIP {name} &7information:"
+        - ""
+        - " &a➤ &fName: &7{name}"
+        - " &a➤ &fStarted in: &7{date}"
+        - " &a➤ &fExpires in: &7{remaining_time}"
+        - ""
+        - "{status}"
+        - ""
+      Custom-Skull: true # If false, will use the item in "Material"
+      Skull-URL: "65d44f08b95edf08982c68f0f6b056fb3b57a9cb02265bbb393f75fe50457fcb"
+      Material: "GLASS:5:true" # Material : Data : Glow
+    Animation:
+      Enable: true
+      Particle-Type: "FIREWORKS_SPARK"
+      Period-Basis: 110 # The higher the value, the longer the animation will last
+      Quantity: 1 # Base amount of particles that will generate
+      Settings:
+        Degrees: 5
+        X: 1
+        Y: 1
+        Z: 0.75
+    Title:
+      Line1: "&b&lVIP"
+      Line2: "&e{group} {player} &7became &f{name} &7for &e{time}"
+    Commands: # Commands that will be executed when vip is activated
+      - "give {player} stone 16"
+  VIP:
+    Group: "vip"
+    Name: "&a[VIP]"
+    Icon:
+      Name: "&6&lVIP &8» {name}"
+      Lore:
+        - ""
+        - "&7See below for &aVIP {name} &7information:"
+        - ""
+        - " &a➤ &fName: &7{name}"
+        - " &a➤ &fStarted in: &7{date}"
+        - " &a➤ &fExpires in: &7{remaining_time}"
+        - ""
+        - "{status}"
+        - ""
+      Custom-Skull: true
+      Skull-URL: "f7203d2f08a7d2b7c95532865eb2b593e526ddb92fd5cca9e7d7b622bc539906"
+      Material: "GRASS:0:true"
+    Animation:
+      Enable: true
+      Particle-Type: "VILLAGER_HAPPY"
+      Period-Basis: 110
+      Quantity: 2
+      Settings:
+        Degrees: 5
+        X: 1.25
+        Y: 1
+        Z: 0.75
+    Title:
+      Line1: "&b&lVIP"
+      Line2: "&e{group} {player} &7became &f{name} &7for &e{time}"
+    Commands: []

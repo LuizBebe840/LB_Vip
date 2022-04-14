@@ -1,0 +1,62 @@
+###############################################
+#                                             #
+#        Developer: LuizBebe840#9887          #
+#                                             #
+###############################################
+
+Key-Delete:
+  Delete: " &8☰ &aClick to delete key"
+  NoAccess: " &8☰ &cYou cannot delete keys!"
+
+Vip-Time:
+  Title: "&8Your VIP's"
+  Size: 3
+  Next-Slot: 17
+  Back-Slot: 9
+  Allowed-Slots: [11, 12, 13, 14, 15]
+  Items:
+    NoVip:
+      Name: "&c&lNO VIP"
+      Lore:
+        - ""
+        - "&7You &cdon't &7have any &fVIP's&7!"
+        - "&fBuy it at: &elbstore.com.br"
+      Icon:
+        Custom-Skull: false
+        Skull-URL: "7960da26126bc02ae882310105c765e10694792e67716dd50bafec190febecf3"
+        Material: "WEB:0:true" # Material : Data : Glow
+      Slot: 13
+
+Keys:
+  Title: "&8All Keys"
+  Size: 4
+  Next-Slot: 35
+  Back-Slot: 27
+  Allowed-Slots: [11, 12, 13, 14, 15, 20, 21, 22, 23, 24]
+  Items:
+    NoKeys:
+      Name: "&c&lNO KEYS"
+      Lore:
+        - ""
+        - "&7There is &cno &7key &fcreated&7!"
+      Icon:
+        Custom-Skull: false
+        Skull-URL: "7960da26126bc02ae882310105c765e10694792e67716dd50bafec190febecf3"
+        Material: "WEB:0:true" # Material : Data : Glow
+      Slot: 13
+    Key:
+      Name: "&6&lKEY &8» &e{vip}" # {vip} = vip name | {key} = key id
+      Lore:
+        - ""
+        - "&7See below for &aKey {key} &7information:"
+        - ""
+        - " &a➤ &fVIP: &7{vip}"
+        - " &a➤ &fKey: &e{key}"
+        - " &a➤ &fTime: &7{vip_time}"
+        - ""
+        - "{delete_key}"
+        - ""
+      Icon:
+        Custom-Skull: false
+        Skull-URL: "a7ed66f5a70209d821167d156fdbc0ca3bf11ad54ed5d86e75c265f7e5029ec1"
+        Material: "TRIPWIRE_HOOK:0:false" # Material : Data : Glow

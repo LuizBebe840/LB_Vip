@@ -1,0 +1,89 @@
+###############################################
+#                                             #
+#        Developer: LuizBebe840#9887          #
+#                                             #
+###############################################
+
+MySQL:
+  Enable: false # If false, the connection with SQLite will be used
+  Host: "localhost:3306"
+  User: "root"
+  DB: "db"
+  Password: ""
+
+Prefix:
+  Enable: true
+  Model: "&b&lVIP &8➜"
+
+Time-Format:
+  Days: 'day:days' # Singular : Plural
+  Hours: 'hour:hours'
+  Minutes: 'minute:minutes'
+  Seconds: 'second:seconds'
+
+Vip-Settings:
+  Default-Group: "default" # Group that the player will receive if they don"t have other VIPs
+  Date-Format: "dd/MM/yyyy - HH:mm"
+
+Messages:
+  Add-Vip:
+    Already-Vip:
+      Staff: "&7You have &fadded &a{time} &7to &e{player} {name} &7vip!<nl>&fTotaling: &e{remaining_time}&7!"
+      Player: "&fAdded &a{time} &7to your {name} &7vip!<nl>&fTotaling: &e{remaining_time}&7!"
+    Staff: "&7You &fgave &7the vip {name} &a{time} &7to the player &e{player}&7!"
+    Player: "&7You have &freceived &7the &a{time} {name} &7vip!"
+  Change-Vip:
+    NoVip: "&cYou don't have any VIPs!"
+    InUse: "&cYou are already using this VIP!"
+    Successfully:
+      - ""
+      - "&7You &fswitched &7VIP!"
+      - "&7From: {vip} &7to {vip_exchanged}"
+      - ""
+  Remove-Vip:
+    NoVip: "&cThis player does not have this VIP!"
+    Successfully:
+      Staff: "&7You &fremoved &7the {name} &7VIP from player &e{player}&7!"
+      Player: "&7Your VIP {name} &7has been &fremoved &7by staffer &e{player}&7!"
+  PaperVip:
+    Give: "&7You have &fgiven &71 VIP {vip} &7role with &a{time} &7to player &e{player}&7!"
+    EternalVip: "&cYou already have this Eternal VIP!"
+    Active: "&7You have &factivated &a{time} {vip} &7VIP Paper!"
+  Generate-Key: "&a{time} &e{key} &fkey &7generated &asuccessfully&7!"
+  Actived-Key: "&7You &factivated &7the &e{key} &fkey &7with &a{time} &7of {name} &7VIP!"
+  Delete-Key: "&7You have &asuccessfully &fdeleted &7the &e{key} &7key!"
+  Invalid-Key: "&cThis key does not exist!"
+  Your-VIPs: |
+    &r
+    &bYour VIP's: {vips}
+    &r
+  Expired-Vip: "&7Your &fVIP {name} &7has &cexpired&7!"
+
+Sounds:
+  Add-Vip:
+    Already-Vip:
+      Staff: "ORB_PICKUP"
+      Player: "AMBIENCE_RAIN"
+    Staff: "ORB_PICKUP"
+    Online-Players: "AMBIENCE_THUNDER"
+    Player: "WITHER_DEATH"
+  Change-Vip:
+    NoVip: "NOTE_PLING"
+    InUse: "NOTE_PLING"
+    Successfully: "ANVIL_USE"
+  Remove-Vip:
+    NoVip: "NOTE_PLING"
+    Successfully:
+      Staff: "ORB_PICKUP"
+      Player: "ANVIL_BREAK"
+  PaperVip:
+    Give: "ORB_PICKUP"
+    EternalVip: "NOTE_PLING"
+    Active: "LEVEL_UP"
+  Open-Menu: "CLICK"
+  Generate-Key: "LEVEL_UP"
+  Actived-Key: "LEVEL_UP"
+  Delete-Key: "LEVEL_UP"
+  Invalid-Key: "NOTE_PLING"
+  Your-VIPs: "ORB_PICKUP"
+  Expired-Vip: "ANVIL_BREAK"

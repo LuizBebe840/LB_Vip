@@ -1,0 +1,24 @@
+name: LB_Vip
+version: 1.0
+main: com.luizbebe.vip.Main
+softdepend: [LuckPerms, PermissionsEx, ProtocolLib]
+authors: [LuizBebe840]
+commands:
+  givevip:
+    aliases: [darvip, addvip, setvip, vipgive, vipdar]
+  changevip:
+    aliases: [vipchange, trocarvip, viptrocar, cv, tv]
+  removevip:
+    aliases: [removervip, retirarvip, rv, rvip, tirarvip]
+  viptime:
+    aliases: [tempovip, tvip, vt, vipt, vips, myvips, yourvips, meusvips]
+  generatekey:
+    aliases: [gerarkey, gerarchave, gkey, gerark]
+  usekey:
+    aliases: [usarkey, ativarkey, keyativar, keyactive, activekey, ukey, usek, usark, ativarvip, usevip]
+  deletekey:
+    aliases: [delkey, deletarkey, deletarchave, delchave, dkey, dchave, chavedelete]
+  keys:
+    aliases: [chaves, k, allkeys, serverkeys, skeys, key]
+  papervip:
+    aliases: [papelvip, darpapelvip, papervipgive, givepapervip, pvip, givepvip, gpvip]

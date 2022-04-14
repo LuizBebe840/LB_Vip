@@ -1,0 +1,20 @@
+###############################################
+#                                             #
+#        Developer: LuizBebe840#9887          #
+#                                             #
+###############################################
+
+PaperVip-Item:
+  Name: "&6&lPAPER VIP"
+  Lore:
+    - ""
+    - "&7See below for &finformation &7about this &eVIP Paper&7:"
+    - ""
+    - " &e➤ &fVIP: &7{vip}"
+    - " &e➤ &fTime: &7{vip_time}"
+    - ""
+    - " &8☰ &aClick to activate"
+    - ""
+  Custom-Skull: false
+  Skull-URL: "7380c7e621a1f4da543e4c7ab1494ee184b87bb132418512c9eee858f9de1db"
+  Material: "PAPER:0:true"
