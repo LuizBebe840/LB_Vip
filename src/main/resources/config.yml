@@ -16,10 +16,10 @@ Prefix:
   Model: "&b&lVIP &8➜"
 
 Time-Format:
-  Days: 'day:days' # Singular : Plural
-  Hours: 'hour:hours'
-  Minutes: 'minute:minutes'
-  Seconds: 'second:seconds'
+  Days: "day:days" # Singular : Plural
+  Hours: "hour:hours"
+  Minutes: "minute:minutes"
+  Seconds: "second:seconds"
 
 Vip-Settings:
   Default-Group: "default" # Group that the player will receive if they don"t have other VIPs

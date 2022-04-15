@@ -16,12 +16,15 @@ public class PexHook implements Group {
     public PexHook() {
         permissionManager = PermissionsEx.getPermissionManager();
 
-        LBUtils.getLogger("DEBUG", "§fHooked §bPermissionsEx");
+        LBUtils.getLogger("DEBUG", "§bPermissionsEx §fhooked");
     }
 
     @Override
     public String getGroup(Player player) {
         val user = permissionManager.getUser(player.getUniqueId());
+        if (user.getPrefix() == null)
+            return "";
+
         return user.getPrefix();
     }
 

@@ -13,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class NoVipInventory {
 
-    private final FileConfiguration config;
     private final FileConfiguration menusConfig;
 
     private final Sound openMenuSound;
@@ -23,22 +22,23 @@ public class NoVipInventory {
     private final int slot;
 
     public NoVipInventory(Main main) {
-        config = main.getConfig();
+        val config = main.getConfig();
+
         menusConfig = main.getMenusFile().getConfig();
 
         openMenuSound = Sound.valueOf(config.getString("Sounds.Open-Menu").toUpperCase());
 
         title = menusConfig.getString("Vip-Time.Title").replace("&", "§");
         size = menusConfig.getInt("Vip-Time.Size");
-        slot = config.getInt("Vip-Time.Items.NoVip.Slot");
+        slot = menusConfig.getInt("Vip-Time.Items.NoVip.Slot");
     }
 
     public void noVip(Player player) {
         val inv = Bukkit.createInventory(null, size * 9, title);
 
         inv.setItem(slot, getIcon());
-        player.openInventory(inv);
 
+        player.openInventory(inv);
         LBUtils.playSound(player, openMenuSound);
     }
 

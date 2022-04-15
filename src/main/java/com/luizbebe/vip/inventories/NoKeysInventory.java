@@ -13,7 +13,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class NoKeysInventory {
 
-    private final FileConfiguration config;
     private final FileConfiguration menusConfig;
 
     private final Sound openMenuSound;
@@ -23,22 +22,23 @@ public class NoKeysInventory {
     private final int slot;
 
     public NoKeysInventory(Main main) {
-        config = main.getConfig();
+        val config = main.getConfig();
+
         menusConfig = main.getMenusFile().getConfig();
 
         openMenuSound = Sound.valueOf(config.getString("Sounds.Open-Menu").toUpperCase());
 
         title = menusConfig.getString("Keys.Title").replace("&", "§");
         size = menusConfig.getInt("Keys.Size");
-        slot = config.getInt("Keys.Items.NoKeys.Slot");
+        slot = menusConfig.getInt("Keys.Items.NoKeys.Slot");
     }
 
     public void noKeys(Player player) {
         val inv = Bukkit.createInventory(null, size * 9, title);
 
         inv.setItem(slot, getIcon());
-        player.openInventory(inv);
 
+        player.openInventory(inv);
         LBUtils.playSound(player, openMenuSound);
     }
 
