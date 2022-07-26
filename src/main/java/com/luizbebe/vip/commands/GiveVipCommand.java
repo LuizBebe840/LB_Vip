@@ -53,10 +53,6 @@ public class GiveVipCommand extends CommandRegistry {
             return true;
 
         }
-        val target = Bukkit.getPlayer(args[0]);
-        if (!LBUtils.playerIsOnline(sender, target))
-            return true;
-
         val vip = VipDAO.getVip(args[1]);
         if (vip == null) {
             sender.sendMessage("");
@@ -69,7 +65,13 @@ public class GiveVipCommand extends CommandRegistry {
             return true;
 
         }
+        val target = Bukkit.getOfflinePlayer(args[0]);
         val user = UserDAO.getUser(target.getUniqueId());
+        if (user == null) {
+            LBUtils.sendMessage(sender, "§cUser is null!");
+            LBUtils.playSound(sender, Sound.NOTE_PLING);
+            return true;
+        }
         val targetVip = user.getVip(vip.getId());
         if (targetVip != null) {
             if (targetVip.isEternal()) {

@@ -3,7 +3,7 @@ package com.luizbebe.vip.hook.groups;
 import com.luizbebe.vip.hook.Group;
 import com.luizbebe.vip.utils.LBUtils;
 import lombok.val;
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 import ru.tehkode.permissions.PermissionManager;
 import ru.tehkode.permissions.bukkit.PermissionsEx;
 
@@ -20,7 +20,7 @@ public class PexHook implements Group {
     }
 
     @Override
-    public String getGroup(Player player) {
+    public String getGroup(OfflinePlayer player) {
         val user = permissionManager.getUser(player.getUniqueId());
         if (user.getPrefix() == null)
             return "";
@@ -29,7 +29,7 @@ public class PexHook implements Group {
     }
 
     @Override
-    public void setGroup(Player player, String group) {
+    public void setGroup(OfflinePlayer player, String group) {
         val user = permissionManager.getUser(player.getUniqueId());
         val groups = Collections.singletonList(permissionManager.getGroup(group));
 

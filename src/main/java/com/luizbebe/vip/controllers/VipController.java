@@ -12,6 +12,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.val;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -86,34 +87,30 @@ public class VipController {
                 degrees += settings.getDegrees();
                 periodBasis++;
             }
-        }.runTaskTimerAsynchronously(main, 0L, 0L);
+        }.runTaskTimerAsynchronously(main, 0L, 1L);
     }
 
-    public void addAlreadyVip(Player player, Vip vip, long time) {
+    public void addAlreadyVip(OfflinePlayer player, Vip vip, long time) {
         val newTime = vip.getTime() + time;
+        if (player.isOnline()) {
+            LBUtils.sendMessage(player.getPlayer(), alreadyVipPlayer.replace("<nl>", "\n").replace("{time}", TimeFormat.format(time)).replace("{name}", vip.getName()).replace("{remaining_time}", TimeFormat.format(newTime)));
+            LBUtils.playSound(player.getPlayer(), Sound.valueOf(config.getString("Sounds.Add-Vip.Already-Vip.Player").toUpperCase()));
 
-        LBUtils.sendMessage(player, alreadyVipPlayer.replace("<nl>", "\n").replace("{time}", TimeFormat.format(time)).replace("{name}", vip.getName()).replace("{remaining_time}", TimeFormat.format(newTime)));
-        LBUtils.playSound(player, Sound.valueOf(config.getString("Sounds.Add-Vip.Already-Vip.Player").toUpperCase()));
-
-        if (vip.getSettings().isEnabledAnimation())
-            sendParticle(player, vip);
-
+            if (vip.getSettings().isEnabledAnimation())
+                sendParticle(player.getPlayer(), vip);
+        }
         vip.setTime(newTime);
-        LBUtils.runCommandList(player, vip.getCommands());
+        LBUtils.runCommandList(player.getPlayer(), vip.getCommands());
     }
 
-    public void addVip(Player player, Vip vip, long time) {
+    public void addVip(OfflinePlayer player, Vip vip, long time) {
         val user = UserDAO.getUser(player.getUniqueId());
         val settings = vip.getSettings();
-
-        if (settings.isEnabledAnimation())
-            sendParticle(player, vip);
 
         vip.setTime(time);
         vip.setDate(dateFormat.format(Calendar.getInstance().getTime()));
         user.setCurrentVip(vip);
         user.getVips().add(vip);
-        group.setGroup(player, vip.getGroup());
 
         val formattedTime = vip.isEternal() ? permanentLore : TimeFormat.format(time);
         Bukkit.getOnlinePlayers().forEach(players -> {
@@ -121,9 +118,17 @@ public class VipController {
             LBUtils.playSound(players, Sound.valueOf(config.getString("Sounds.Add-Vip.Online-Players").toUpperCase()));
 
         });
-        LBUtils.sendMessage(player, addedVipPlayer.replace("{name}", vip.getName()).replace("{time}", formattedTime));
-        LBUtils.playSound(player, Sound.valueOf(config.getString("Sounds.Add-Vip.Player").toUpperCase()));
-        LBUtils.runCommandList(player, vip.getCommands());
+        if (player.isOnline()) {
+            if (settings.isEnabledAnimation())
+                sendParticle(player.getPlayer(), vip);
+
+            group.setGroup(player, vip.getGroup());
+
+            LBUtils.sendMessage(player.getPlayer(), addedVipPlayer.replace("{name}", vip.getName()).replace("{time}", formattedTime));
+            LBUtils.playSound(player.getPlayer(), Sound.valueOf(config.getString("Sounds.Add-Vip.Player").toUpperCase()));
+            LBUtils.runCommandList(player.getPlayer(), vip.getCommands());
+        }
+
     }
 
     public TimeUnit getTimeType(String arg) {

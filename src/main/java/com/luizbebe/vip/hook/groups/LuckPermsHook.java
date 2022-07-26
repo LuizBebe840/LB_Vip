@@ -6,7 +6,7 @@ import lombok.val;
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 
 public class LuckPermsHook implements Group {
 
@@ -19,7 +19,7 @@ public class LuckPermsHook implements Group {
     }
 
     @Override
-    public String getGroup(Player player) {
+    public String getGroup(OfflinePlayer player) {
         val user = luckPerms.getUserManager().getUser(player.getUniqueId());
         if (user == null)
             return "";
@@ -32,7 +32,7 @@ public class LuckPermsHook implements Group {
     }
 
     @Override
-    public void setGroup(Player player, String group) {
+    public void setGroup(OfflinePlayer player, String group) {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " parent set " + group);
     }
 

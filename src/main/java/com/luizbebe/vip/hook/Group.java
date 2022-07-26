@@ -1,11 +1,11 @@
 package com.luizbebe.vip.hook;
 
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 
 public interface Group {
 
-    String getGroup(Player player);
+    String getGroup(OfflinePlayer player);
 
-    void setGroup(Player player, String group);
+    void setGroup(OfflinePlayer player, String group);
 
 }
