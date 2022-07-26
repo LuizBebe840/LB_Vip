@@ -8,15 +8,14 @@ import com.luizbebe.vip.registry.EventRegistry;
 import lombok.val;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 
-public class JoinQuitListener extends EventRegistry {
+public class JoinListener extends EventRegistry {
 
     private final Group group;
 
     private final UserManager userManager;
 
-    public JoinQuitListener(Main main) {
+    public JoinListener(Main main) {
         super(main, main.getConfig());
 
         group = main.getGroup();
@@ -32,18 +31,8 @@ public class JoinQuitListener extends EventRegistry {
 
         userManager.saveUserData(player.getUniqueId());
         val user = UserDAO.getUser(player.getUniqueId());
-
         if (user.getCurrentVip() != null)
             group.setGroup(player, user.getCurrentVip().getGroup());
-    }
-
-    @EventHandler
-    void playerQuit(PlayerQuitEvent event) {
-        val player = event.getPlayer();
-        val user = UserDAO.getUser(player.getUniqueId());
-
-        userManager.save(user);
-        UserDAO.getUsers().remove(user);
     }
 
 }

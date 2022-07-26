@@ -24,6 +24,7 @@ Time-Format:
 Vip-Settings:
   Default-Group: "default" # Group that the player will receive if they don"t have other VIPs
   Date-Format: "dd/MM/yyyy - HH:mm"
+  Count-Offline: false # If true, the vips time will run even with the player offline
 
 Messages:
   Add-Vip:

@@ -34,7 +34,7 @@ public class UserController {
             if (user.getVips().isEmpty())
                 return;
 
-            user.getVips().stream().filter(vips -> !vips.isEternal()).forEach(vips -> {
+            user.getVips().stream().filter(vips -> !vips.isEternal() && vips.getId().equalsIgnoreCase(user.getCurrentVip().getId())).forEach(vips -> {
                 if (vips.getTime() > 0)
                     vips.setTime(vips.getTime() - 1000L);
 
@@ -46,7 +46,8 @@ public class UserController {
                 }
 
             });
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 
     public synchronized void changeVip(User user, Vip vip) {

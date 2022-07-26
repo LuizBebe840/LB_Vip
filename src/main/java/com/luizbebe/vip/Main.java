@@ -14,7 +14,7 @@ import com.luizbebe.vip.files.VipsFile;
 import com.luizbebe.vip.hook.Group;
 import com.luizbebe.vip.hook.groups.LuckPermsHook;
 import com.luizbebe.vip.hook.groups.PexHook;
-import com.luizbebe.vip.listeners.JoinQuitListener;
+import com.luizbebe.vip.listeners.JoinListener;
 import com.luizbebe.vip.listeners.KeysListener;
 import com.luizbebe.vip.listeners.PaperVipListener;
 import com.luizbebe.vip.listeners.VipTimeListener;
@@ -26,6 +26,7 @@ import com.luizbebe.vip.storage.providers.MySQL;
 import com.luizbebe.vip.storage.providers.SQLite;
 import com.luizbebe.vip.utils.LBUtils;
 import lombok.Getter;
+import lombok.val;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -58,7 +59,7 @@ public class Main extends JavaPlugin {
         register();
 
         Bukkit.getOnlinePlayers().forEach(players -> userManager.saveUserData(players.getUniqueId()));
-        new UpdateVipsRunnable(this).runTaskTimerAsynchronously(this, 20L, 20L);
+        start();
     }
 
     @Override
@@ -80,7 +81,7 @@ public class Main extends JavaPlugin {
         new DeleteKeyCommand(this);
         new KeysCommand(this);
         new PaperVipCommand(this);
-        new JoinQuitListener(this);
+        new JoinListener(this);
         new VipTimeListener(this);
         new KeysListener(this);
         new PaperVipListener(this);
@@ -104,6 +105,15 @@ public class Main extends JavaPlugin {
     private void setupSQL() {
         dbProvider = getConfig().getBoolean("MySQL.Enable") ? new MySQL(this) : new SQLite();
         gson = new GsonBuilder().setPrettyPrinting().create();
+    }
+
+    private void start() {
+        val update = new UpdateVipsRunnable(this);
+        if (Bukkit.getPluginManager().getPlugin("LuckPerms") == null)
+            update.runTaskTimerAsynchronously(this, 20L, 20L);
+
+        else
+            update.runTaskTimer(this, 20L, 20L);
     }
 
 }
